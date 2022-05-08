@@ -1,0 +1,92 @@
+let mapleader = ' '
+
+set number
+" set incsearch hlsearch
+set nois hlsearch
+set ignorecase smartcase
+set clipboard+=unnamed
+
+imap <C-o> <Esc>
+vmap <C-o> <Esc>
+imap <D-o> <Esc>
+vmap <D-o> <Esc>
+
+" Moving blocks of text in visual mode
+vnoremap < <gv
+vnoremap > >gv
+" Restore last visual mode selection (shortcut)
+noremap <leader>v gv
+
+" move during typing:
+noremap <C-j> <C-e>
+noremap <C-k> <C-y>
+noremap <C-h> b
+noremap <C-l> w
+" Insert mode
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+inoremap <C-l> <Right>
+inoremap <C-h> <Left>
+
+" Clear search
+nmap <leader>l :nohlsearch<CR>
+
+nnoremap * *``
+" Search for text selected by visual mode:
+vnoremap // y/<C-R>"<CR><S-N>
+" Search for yanked text:
+noremap <leader>s /<C-R>0<CR>
+
+" Change part of text
+noremap K ciw
+noremap <leader>w ciw
+noremap <leader>y yiw
+noremap <leader>' ci'
+noremap <leader>" ci"
+noremap <leader>( ci(
+noremap <leader>p viwp
+noremap <leader>y' yi'p
+noremap <leader>y" yi"p
+
+" Moving
+noremap <leader>0 ^
+
+" yank + clipboard
+
+" Reload .ideavimrc
+nnoremap <Space>vs :source ~/.ideavimrc<CR>
+
+" Macros:
+let @s = 'f,lxi'
+let @s = 'f,lxi^J^['
+let @d = 'f,lxi'
+
+" ============================================================================
+" IDE actions
+" ============================================================================
+
+" Action List: https://gist.github.com/zchee/9c78f91cc5ad771c1f5d
+" nnoremap / :action Find<CR>
+" nnoremap n :action FindNext<CR>
+" nnoremap N :action FindPrevious<CR>
+" nnoremap U :action $Redo<CR>
+nnoremap <leader>o :action GotoClass<CR>
+nnoremap <leader>O :action GotoFile<CR>
+nnoremap <leader>d :action CloseContent<CR>
+nnoremap <leader>j :action RecentFiles<CR>
+nnoremap <leader>k :action FileStructurePopup<CR>
+nnoremap <leader>h :action QuickJavaDoc<CR>
+nnoremap <leader>re :action RenameElement<cr>
+nnoremap <leader>rf :action RenameFile<cr>
+
+nnoremap <leader>ga :action GotoAction<cr>
+nnoremap <leader>gi :action GotoImplementation<cr>
+nnoremap <leader>gs :action GotoSuperMethod<cr>
+nnoremap <leader>gd :action GotoDeclaration<cr>
+nnoremap <leader>gt :action GotoTest<cr>
+nnoremap <leader>gr :action GotoRelated<cr>
+nnoremap <leader>gb :action Annotate<cr>
+
+" Errors
+nnoremap <leader>en :action GotoNextError<cr>
+nnoremap <leader>ep :action GotoPreviousError<cr>
